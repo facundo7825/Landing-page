@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NEXORA — Marketing Digital, Automatización & Desarrollo Web</title>
+<meta name="description" content="Agencia de marketing digital, automatización con IA y desarrollo web. Diseñamos sistemas que atraen clientes y trabajan por vos 24/7." />
+
+<!-- Tipografías distintivas -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:        #07080c;
+  --bg-2:      #0c0e15;
+  --surface:   #11141d;
+  --surface-2: #161a25;
+  --line:      rgba(255,255,255,.08);
+  --line-2:    rgba(255,255,255,.14);
+  --text:      #f3f5f8;
+  --muted:     #9097a5;
+  --muted-2:   #636a78;
+
+  --accent:    #c9ff2e;   /* lima eléctrico */
+  --accent-ink:#0c1500;
+  --cyan:      #2bf6cf;   /* menta/cian   */
+  --violet:    #7b6bff;   /* glow profundo */
+
+  --font-display:'Bricolage Grotesque', sans-serif;
+  --font-body:'Manrope', sans-serif;
+  --font-mono:'JetBrains Mono', monospace;
+
+  --maxw: 1240px;
+  --radius: 18px;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+/* ============ RESET ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.6;
+  overflow-x:hidden;
+  position:relative;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+section{position:relative}
+::selection{background:var(--accent);color:var(--accent-ink)}
+
+/* ============ ATMÓSFERA: mesh + grano ============ */
+.atmos{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:.5;mix-blend-mode:screen}
+.blob.a{width:680px;height:680px;background:radial-gradient(circle,#a8e000,transparent 65%);top:-260px;left:-120px;animation:drift1 26s var(--ease) infinite alternate}
+.blob.b{width:560px;height:560px;background:radial-gradient(circle,var(--cyan),transparent 65%);top:32%;right:-200px;opacity:.32;animation:drift2 32s var(--ease) infinite alternate}
+.blob.c{width:620px;height:620px;background:radial-gradient(circle,var(--violet),transparent 65%);bottom:-280px;left:24%;opacity:.3;animation:drift3 30s var(--ease) infinite alternate}
+@keyframes drift1{to{transform:translate(120px,80px) scale(1.15)}}
+@keyframes drift2{to{transform:translate(-100px,-60px) scale(1.1)}}
+@keyframes drift3{to{transform:translate(80px,-90px) scale(1.2)}}
+
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.grid-lines{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.4;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 0%,transparent 75%);}
+
+/* ============ LAYOUT ============ */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{font-family:var(--font-mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--accent);display:inline-block}
+
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.02;letter-spacing:-.02em}
+.section-head{max-width:720px;margin-bottom:60px}
+.section-head h2{font-size:clamp(2rem,5vw,3.5rem);margin:20px 0 18px}
+.section-head p{color:var(--muted);font-size:1.05rem}
+
+/* ============ NAV ============ */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s var(--ease)}
+header.scrolled{background:rgba(7,8,12,.7);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{font-family:var(--font-display);font-weight:700;font-size:1.4rem;letter-spacing:-.03em;display:flex;align-items:center;gap:10px}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.4;transform:scale(.8)}}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-size:.94rem;color:var(--muted);font-weight:500;transition:.25s;position:relative}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{padding:11px 22px;background:var(--accent);color:var(--accent-ink);border-radius:100px;font-weight:700;font-size:.92rem;transition:.3s var(--ease)}
+.nav-cta:hover{box-shadow:0 0 30px rgba(201,255,46,.45);transform:translateY(-2px)}
+.burger{display:none;flex-direction:column;gap:5px}
+.burger span{width:26px;height:2px;background:var(--text);transition:.3s}
+
+/* ============ HERO ============ */
+.hero{padding:170px 0 110px;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line-2);border-radius:100px;font-size:.82rem;color:var(--muted);font-family:var(--font-mono);margin-bottom:34px;background:rgba(255,255,255,.02)}
+.hero-badge .live{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.hero h1{font-size:clamp(2.8rem,7.5vw,6rem);max-width:14ch}
+.hero h1 .grad{background:linear-gradient(105deg,var(--accent),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .out{color:transparent;-webkit-text-stroke:1.4px var(--muted-2)}
+.hero p.lead{font-size:clamp(1.05rem,2vw,1.32rem);color:var(--muted);max-width:54ch;margin:32px 0 42px;line-height:1.55}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:100px;font-weight:700;font-size:1rem;transition:.3s var(--ease)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(201,255,46,.35)}
+.btn-ghost{border:1px solid var(--line-2);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn .arrow{transition:.3s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+
+.hero-meta{display:flex;gap:44px;margin-top:64px;flex-wrap:wrap}
+.hero-meta .item .n{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--text)}
+.hero-meta .item .n span{color:var(--accent)}
+.hero-meta .item .l{font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:var(--font-mono)}
+
+/* floating terminal card */
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.terminal{background:linear-gradient(180deg,var(--surface),var(--bg-2));border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);position:relative;animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+.terminal::before{content:"";position:absolute;inset:0;border-radius:var(--radius);padding:1px;background:linear-gradient(135deg,rgba(201,255,46,.5),transparent 40%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.term-bar{display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+.term-bar i{width:11px;height:11px;border-radius:50%;background:#2a2f3a}
+.term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term-bar .t{margin-left:10px;font-family:var(--font-mono);font-size:.78rem;color:var(--muted-2)}
+.term-body{padding:24px;font-family:var(--font-mono);font-size:.86rem;line-height:1.9}
+.term-body .ln{opacity:0;animation:typein .5s var(--ease) forwards}
+.term-body .c-muted{color:var(--muted-2)}
+.term-body .c-acc{color:var(--accent)}
+.term-body .c-cyan{color:var(--cyan)}
+.term-body .c-vio{color:var(--violet)}
+@keyframes typein{to{opacity:1}}
+
+/* ============ MARQUEE clientes ============ */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0;overflow:hidden;background:rgba(255,255,255,.012)}
+.marquee .track{display:flex;gap:70px;width:max-content;animation:scroll 28s linear infinite;align-items:center}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.marquee .item{font-family:var(--font-display);font-weight:600;font-size:1.5rem;color:var(--muted-2);white-space:nowrap;transition:.3s;letter-spacing:-.02em}
+.marquee .item:hover{color:var(--text)}
+
+/* ============ SERVICIOS ============ */
+.services{padding:130px 0}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:38px 34px;position:relative;overflow:hidden;transition:.45s var(--ease)}
+.svc-card::after{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(201,255,46,.1),transparent 60%);opacity:0;transition:.4s}
+.svc-card:hover{transform:translateY(-8px);border-color:var(--line-2)}
+.svc-card:hover::after{opacity:1}
+.svc-num{font-family:var(--font-mono);font-size:.8rem;color:var(--muted-2);letter-spacing:.1em}
+.svc-icon{width:58px;height:58px;border-radius:14px;display:grid;place-items:center;margin:18px 0 26px;background:rgba(201,255,46,.08);border:1px solid rgba(201,255,46,.2);font-size:1.6rem}
+.svc-card.c2 .svc-icon{background:rgba(43,246,207,.08);border-color:rgba(43,246,207,.22)}
+.svc-card.c3 .svc-icon{background:rgba(123,107,255,.1);border-color:rgba(123,107,255,.25)}
+.svc-card h3{font-size:1.55rem;margin-bottom:14px}
+.svc-card p{color:var(--muted);font-size:.97rem;margin-bottom:24px}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:11px}
+.svc-list li{display:flex;gap:11px;align-items:flex-start;font-size:.92rem;color:var(--muted)}
+.svc-list li::before{content:"→";color:var(--accent);font-weight:700}
+
+/* ============ PROCESO ============ */
+.process{padding:120px 0;border-top:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:50px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.step{padding:40px 32px;border-right:1px solid var(--line);position:relative;transition:.35s}
+.step:last-child{border-right:none}
+.step:hover{background:var(--surface)}
+.step .s-n{font-family:var(--font-display);font-size:3.2rem;font-weight:700;color:var(--surface-2);-webkit-text-stroke:1px var(--line-2);transition:.35s}
+.step:hover .s-n{color:var(--accent);-webkit-text-stroke:0}
+.step h3{font-size:1.25rem;margin:14px 0 10px}
+.step p{font-size:.9rem;color:var(--muted)}
+
+/* ============ STATS / banda ============ */
+.band{padding:90px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:
+  radial-gradient(600px 300px at 80% 50%,rgba(43,246,207,.06),transparent 60%),
+  radial-gradient(600px 300px at 10% 50%,rgba(201,255,46,.06),transparent 60%)}
+.band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center}
+.stat .n{font-family:var(--font-display);font-weight:700;font-size:clamp(2.6rem,5vw,3.8rem);line-height:1;background:linear-gradient(120deg,var(--accent),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .l{color:var(--muted);margin-top:10px;font-size:.95rem}
+
+/* ============ WHY / features ============ */
+.why{padding:130px 0}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.feat{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.feat:last-child{border-bottom:none}
+.feat .fi{flex:0 0 46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);font-size:1.2rem}
+.feat h3{font-size:1.18rem;margin-bottom:6px}
+.feat p{font-size:.93rem;color:var(--muted)}
+.why-visual{aspect-ratio:1;border-radius:24px;border:1px solid var(--line);background:
+  conic-gradient(from 180deg at 50% 50%,rgba(201,255,46,.14),rgba(43,246,207,.1),rgba(123,107,255,.12),rgba(201,255,46,.14));
+  position:relative;overflow:hidden;display:grid;place-items:center}
+.why-visual::before{content:"";position:absolute;inset:1px;border-radius:23px;background:var(--bg-2)}
+.orbit{position:relative;width:80%;height:80%;z-index:1}
+.orbit .ring{position:absolute;inset:0;border:1px solid var(--line);border-radius:50%}
+.orbit .ring.r2{inset:18%;border-color:var(--line-2)}
+.orbit .ring.r3{inset:36%}
+.orbit .core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-display);font-weight:700;font-size:2.4rem;color:var(--accent);text-shadow:0 0 30px rgba(201,255,46,.4)}
+.orbit .sat{position:absolute;width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--line-2);display:grid;place-items:center;font-size:1rem;top:50%;left:50%;margin:-20px}
+.orbit .o1{animation:orbit 14s linear infinite}
+.orbit .o2{animation:orbit 20s linear infinite reverse}
+.orbit .o3{animation:orbit 9s linear infinite}
+@keyframes orbit{from{transform:rotate(0) translateX(140px) rotate(0)}to{transform:rotate(360deg) translateX(140px) rotate(-360deg)}}
+.orbit .o2{animation-name:orbit2}
+@keyframes orbit2{from{transform:rotate(0) translateX(95px) rotate(0)}to{transform:rotate(360deg) translateX(95px) rotate(-360deg)}}
+.orbit .o3{animation-name:orbit3}
+@keyframes orbit3{from{transform:rotate(0) translateX(58px) rotate(0)}to{transform:rotate(360deg) translateX(58px) rotate(-360deg)}}
+
+/* ============ TESTIMONIOS ============ */
+.testi{padding:120px 0;border-top:1px solid var(--line)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+.quote{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;gap:22px;transition:.35s var(--ease)}
+.quote:hover{border-color:var(--line-2);transform:translateY(-6px)}
+.quote .mark{font-family:var(--font-display);font-size:3rem;line-height:.5;color:var(--accent);height:24px}
+.quote p{font-size:1rem;color:var(--text);flex:1}
+.quote .who{display:flex;align-items:center;gap:13px}
+.quote .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--cyan));display:grid;place-items:center;font-weight:700;color:var(--accent-ink);font-family:var(--font-display)}
+.quote .who .nm{font-weight:700;font-size:.92rem}
+.quote .who .rl{font-size:.82rem;color:var(--muted)}
+
+/* ============ PLANES ============ */
+.pricing{padding:130px 0;border-top:1px solid var(--line)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:54px}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:40px 34px;display:flex;flex-direction:column;transition:.4s var(--ease)}
+.plan:hover{transform:translateY(-8px)}
+.plan.featured{border-color:var(--accent);background:linear-gradient(180deg,rgba(201,255,46,.06),var(--surface));position:relative}
+.plan.featured .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--accent-ink);font-size:.74rem;font-weight:700;padding:5px 14px;border-radius:100px;font-family:var(--font-mono);letter-spacing:.05em}
+.plan .pn{font-family:var(--font-display);font-size:1.35rem;font-weight:600}
+.plan .pd{color:var(--muted);font-size:.9rem;margin:8px 0 24px}
+.plan .pp{font-family:var(--font-display);font-size:2.6rem;font-weight:700}
+.plan .pp small{font-size:.95rem;color:var(--muted);font-family:var(--font-body);font-weight:500}
+.plan ul{list-style:none;margin:26px 0 30px;display:flex;flex-direction:column;gap:13px;flex:1}
+.plan ul li{display:flex;gap:11px;font-size:.92rem;color:var(--muted)}
+.plan ul li::before{content:"✦";color:var(--accent)}
+.plan .btn{width:100%;justify-content:center}
+.plan:not(.featured) .btn{background:var(--surface-2);color:var(--text);border:1px solid var(--line-2)}
+.plan:not(.featured) .btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ============ CTA + CONTACTO ============ */
+.contact{padding:130px 0}
+.contact-card{background:
+  radial-gradient(700px 400px at 100% 0%,rgba(201,255,46,.1),transparent 55%),
+  radial-gradient(700px 400px at 0% 100%,rgba(43,246,207,.08),transparent 55%),
+  var(--surface);
+  border:1px solid var(--line);border-radius:28px;padding:70px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.contact-card h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:18px}
+.contact-card .lead{color:var(--muted);margin-bottom:30px}
+.contact-info{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+.contact-info a{display:flex;align-items:center;gap:13px;color:var(--muted);font-size:.96rem;transition:.25s}
+.contact-info a:hover{color:var(--accent)}
+.contact-info .ico{width:38px;height:38px;border-radius:10px;background:var(--bg-2);border:1px solid var(--line);display:grid;place-items:center}
+form{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-size:.82rem;color:var(--muted);font-family:var(--font-mono);letter-spacing:.04em}
+.field input,.field textarea,.field select{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--text);font-family:inherit;font-size:.96rem;transition:.25s;width:100%}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(201,255,46,.12)}
+.field textarea{resize:vertical;min-height:90px}
+form .btn-primary{margin-top:6px;justify-content:center}
+.form-note{font-size:.8rem;color:var(--muted-2);text-align:center}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-2)}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.foot-brand p{color:var(--muted);font-size:.92rem;margin:16px 0 22px;max-width:32ch}
+.socials{display:flex;gap:12px}
+.socials a{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);transition:.3s}
+.socials a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+.foot-col h4{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-2);font-family:var(--font-mono);margin-bottom:18px;font-weight:500}
+.foot-col a{display:block;color:var(--muted);font-size:.93rem;margin-bottom:12px;transition:.25s}
+.foot-col a:hover{color:var(--text);padding-left:4px}
+.foot-bottom{border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;color:var(--muted-2);font-size:.85rem}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(34px);transition:.8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:980px){
+  .hero-grid,.why-grid,.contact-card{grid-template-columns:1fr}
+  .svc-grid,.steps,.band-grid,.testi-grid,.plans,.foot-grid{grid-template-columns:1fr 1fr}
+  .terminal{display:none}
+  .contact-card{padding:42px}
+  .steps .step{border-right:none;border-bottom:1px solid var(--line)}
+}
+@media(max-width:680px){
+  body{font-size:16px}
+  .nav-links{position:fixed;inset:0;background:rgba(7,8,12,.97);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;gap:30px;font-size:1.3rem;transform:translateX(100%);transition:.4s var(--ease)}
+  .nav-links.open{transform:none}
+  .nav-links a{color:var(--text)}
+  .burger{display:flex;z-index:101}
+  .svc-grid,.steps,.band-grid,.testi-grid,.plans,.foot-grid{grid-template-columns:1fr}
+  .band-grid{gap:50px}
+  .hero{padding:130px 0 80px}
+  .hero-meta{gap:30px}
+  .contact-card{padding:30px}
+}
+</style>
+</head>
+<body>
+
+<!-- Atmósfera -->
+<div class="atmos"><div class="blob a"></div><div class="blob b"></div><div class="blob c"></div></div>
+<div class="grid-lines"></div>
+<div class="grain"></div>
+
+<!-- ===== NAV ===== -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#" class="logo"><span class="dot"></span>NEXORA</a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#planes">Planes</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="nav-cta">Agendá una llamada</a>
+    <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-badge"><span class="live"></span> Agencia digital · Marketing · Automatización · Web</div>
+      <h1>Convertimos tu negocio en una <span class="grad">máquina de clientes</span> que trabaja <span class="out">24/7</span>.</h1>
+      <p class="lead">Diseñamos estrategias de marketing, automatizamos tus procesos con IA y desarrollamos webs que venden. Menos tareas manuales, más resultados medibles.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary">Quiero crecer <span class="arrow">→</span></a>
+        <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+      </div>
+      <div class="hero-meta">
+        <div class="item"><div class="n">+<span>120</span></div><div class="l">Proyectos lanzados</div></div>
+        <div class="item"><div class="n">3.4<span>x</span></div><div class="l">ROI promedio</div></div>
+        <div class="item"><div class="n">98<span>%</span></div><div class="l">Clientes que repiten</div></div>
+      </div>
+    </div>
+
+    <!-- terminal flotante -->
+    <div class="terminal">
+      <div class="term-bar"><i></i><i></i><i></i><span class="t">nexora · automation.flow</span></div>
+      <div class="term-body" id="term">
+        <div class="ln"><span class="c-muted">$</span> <span class="c-acc">nexora</span> deploy --funnel</div>
+        <div class="ln"><span class="c-cyan">✔</span> Captando leads desde Ads &amp; SEO</div>
+        <div class="ln"><span class="c-cyan">✔</span> Nutriendo con email + WhatsApp IA</div>
+        <div class="ln"><span class="c-cyan">✔</span> Agendando reuniones automáticamente</div>
+        <div class="ln"><span class="c-vio">→</span> CRM actualizado en tiempo real</div>
+        <div class="ln"><span class="c-muted"># nuevos leads hoy</span></div>
+        <div class="ln"><span class="c-acc">▮ 47</span> <span class="c-muted">(+22% vs ayer)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee">
+  <div class="track">
+    <span class="item">Comercios locales</span><span class="item">★</span>
+    <span class="item">E-commerce</span><span class="item">★</span>
+    <span class="item">Profesionales</span><span class="item">★</span>
+    <span class="item">Startups</span><span class="item">★</span>
+    <span class="item">Inmobiliarias</span><span class="item">★</span>
+    <span class="item">Salud &amp; Bienestar</span><span class="item">★</span>
+    <!-- duplicado para loop -->
+    <span class="item">Comercios locales</span><span class="item">★</span>
+    <span class="item">E-commerce</span><span class="item">★</span>
+    <span class="item">Profesionales</span><span class="item">★</span>
+    <span class="item">Startups</span><span class="item">★</span>
+    <span class="item">Inmobiliarias</span><span class="item">★</span>
+    <span class="item">Salud &amp; Bienestar</span><span class="item">★</span>
+  </div>
+</div>
+
+<!-- ===== SERVICIOS ===== -->
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Qué hacemos</span>
+      <h2>Tres pilares para escalar tu negocio</h2>
+      <p>No vendemos servicios sueltos: integramos marketing, automatización y tecnología en un sistema único que genera, atiende y convierte clientes.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc-card c1 reveal tilt">
+        <div class="svc-num">01 / Growth</div>
+        <div class="svc-icon">📈</div>
+        <h3>Marketing Digital</h3>
+        <p>Estrategias de adquisición que ponen tu marca frente a las personas correctas, en el momento correcto.</p>
+        <ul class="svc-list">
+          <li>Campañas en Meta &amp; Google Ads</li>
+          <li>SEO y posicionamiento orgánico</li>
+          <li>Contenido y redes sociales</li>
+          <li>Embudos y email marketing</li>
+        </ul>
+      </article>
+      <article class="svc-card c2 reveal tilt">
+        <div class="svc-num">02 / Efficiency</div>
+        <div class="svc-icon">⚡</div>
+        <h3>Automatización &amp; IA</h3>
+        <p>Eliminamos tareas repetitivas con flujos inteligentes que ahorran horas y no dejan pasar ningún lead.</p>
+        <ul class="svc-list">
+          <li>Chatbots y agentes con IA</li>
+          <li>Integraciones (CRM, WhatsApp, email)</li>
+          <li>Automatización de ventas y soporte</li>
+          <li>Reportes y dashboards en vivo</li>
+        </ul>
+      </article>
+      <article class="svc-card c3 reveal tilt">
+        <div class="svc-num">03 / Product</div>
+        <div class="svc-icon">🚀</div>
+        <h3>Desarrollo Web</h3>
+        <p>Sitios y aplicaciones rápidas, hermosas y pensadas para convertir visitantes en clientes.</p>
+        <ul class="svc-list">
+          <li>Landing pages de alta conversión</li>
+          <li>Tiendas online (e-commerce)</li>
+          <li>Webs corporativas a medida</li>
+          <li>Apps y plataformas internas</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESO ===== -->
+<section class="process" id="proceso">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Un proceso claro, sin sorpresas</h2>
+      <p>Transparencia en cada etapa. Sabés qué pasa, cuándo pasa y qué resultado esperar.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><div class="s-n">01</div><h3>Diagnóstico</h3><p>Analizamos tu negocio, tu mercado y detectamos las mayores oportunidades de crecimiento.</p></div>
+      <div class="step"><div class="s-n">02</div><h3>Estrategia</h3><p>Diseñamos un plan a medida con objetivos, canales y métricas claras de éxito.</p></div>
+      <div class="step"><div class="s-n">03</div><h3>Ejecución</h3><p>Construimos, lanzamos y automatizamos. Vos te enfocás en tu negocio, nosotros en los resultados.</p></div>
+      <div class="step"><div class="s-n">04</div><h3>Optimización</h3><p>Medimos todo y mejoramos continuamente para maximizar tu retorno mes a mes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="band">
+  <div class="wrap band-grid">
+    <div class="stat reveal"><div class="n" data-count="120" data-suffix="+">0</div><div class="l">Proyectos entregados</div></div>
+    <div class="stat reveal"><div class="n" data-count="3" data-suffix="x" data-dec="3.4">0</div><div class="l">ROI promedio</div></div>
+    <div class="stat reveal"><div class="n" data-count="15000" data-suffix="+">0</div><div class="l">Horas automatizadas</div></div>
+    <div class="stat reveal"><div class="n" data-count="98" data-suffix="%">0</div><div class="l">Satisfacción</div></div>
+  </div>
+</section>
+
+<!-- ===== WHY ===== -->
+<section class="why" id="nosotros">
+  <div class="wrap why-grid">
+    <div class="reveal">
+      <span class="eyebrow">Por qué NEXORA</span>
+      <h2 style="font-size:clamp(2rem,4.5vw,3.2rem);margin:18px 0 34px">No somos otra agencia más</h2>
+      <div class="feat"><div class="fi">🎯</div><div><h3>Orientados a resultados</h3><p>No nos pagás por “horas”: trabajamos por objetivos medibles y reales de tu negocio.</p></div></div>
+      <div class="feat"><div class="fi">🤖</div><div><h3>Tecnología + IA real</h3><p>Implementamos automatizaciones e inteligencia artificial que de verdad mueven la aguja.</p></div></div>
+      <div class="feat"><div class="fi">🔍</div><div><h3>Transparencia total</h3><p>Dashboards en vivo y reportes claros. Siempre sabés en qué se invierte y qué retorna.</p></div></div>
+      <div class="feat"><div class="fi">🤝</div><div><h3>Socios, no proveedores</h3><p>Nos involucramos como si tu negocio fuera nuestro. Tu crecimiento es nuestro KPI.</p></div></div>
+    </div>
+    <div class="why-visual reveal">
+      <div class="orbit">
+        <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div>
+        <div class="core">NX</div>
+        <div class="sat o1">📈</div>
+        <div class="sat o2">⚡</div>
+        <div class="sat o3">🚀</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIOS ===== -->
+<section class="testi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Clientes felices</span>
+      <h2>Resultados que hablan</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="quote reveal">
+        <div class="mark">“</div>
+        <p>Automatizaron toda nuestra atención por WhatsApp y las reservas subieron un 40% en dos meses. Hoy no perdemos ningún cliente.</p>
+        <div class="who"><div class="av">ML</div><div><div class="nm">María López</div><div class="rl">Dueña · Estudio Bienestar</div></div></div>
+      </div>
+      <div class="quote reveal">
+        <div class="mark">“</div>
+        <p>Rehicieron nuestra web y lanzaron las campañas. Pasamos de 5 a 30 consultas por semana. El equipo es rapidísimo y claro.</p>
+        <div class="who"><div class="av">JT</div><div><div class="nm">Javier Torres</div><div class="rl">CEO · Constructora Norte</div></div></div>
+      </div>
+      <div class="quote reveal">
+        <div class="mark">“</div>
+        <p>Lo mejor es la transparencia: veo en un dashboard cada peso invertido y cada venta. Son verdaderos socios estratégicos.</p>
+        <div class="who"><div class="av">CR</div><div><div class="nm">Carla Ruiz</div><div class="rl">Fundadora · Tienda Online</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLANES ===== -->
+<section class="pricing" id="planes">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center">
+      <span class="eyebrow">Planes flexibles</span>
+      <h2>Elegí cómo querés crecer</h2>
+      <p>Planes pensados para cada etapa. Sin contratos eternos, cancelás cuando quieras.</p>
+    </div>
+    <div class="plans">
+      <div class="plan reveal">
+        <div class="pn">Despegue</div>
+        <div class="pd">Para negocios que arrancan su presencia digital.</div>
+        <div class="pp">$<span data-flex>490</span><small>/mes</small></div>
+        <ul>
+          <li>Landing page profesional</li>
+          <li>Gestión de 1 canal de Ads</li>
+          <li>Automatización básica de leads</li>
+          <li>Reporte mensual</li>
+        </ul>
+        <a href="#contacto" class="btn">Empezar</a>
+      </div>
+      <div class="plan featured reveal">
+        <span class="tag">MÁS ELEGIDO</span>
+        <div class="pn">Crecimiento</div>
+        <div class="pd">El sistema completo para escalar en serio.</div>
+        <div class="pp">$<span data-flex>990</span><small>/mes</small></div>
+        <ul>
+          <li>Todo lo de Despegue</li>
+          <li>Marketing multicanal (Meta + Google)</li>
+          <li>Automatización con IA + chatbot</li>
+          <li>Web/e-commerce a medida</li>
+          <li>Dashboard en tiempo real</li>
+        </ul>
+        <a href="#contacto" class="btn btn-primary">Quiero este</a>
+      </div>
+      <div class="plan reveal">
+        <div class="pn">Enterprise</div>
+        <div class="pd">Soluciones a medida para empresas en expansión.</div>
+        <div class="pp">A medida</div>
+        <ul>
+          <li>Estrategia 360° dedicada</li>
+          <li>Desarrollo de apps y plataformas</li>
+          <li>Automatizaciones avanzadas</li>
+          <li>Equipo y soporte prioritario</li>
+        </ul>
+        <a href="#contacto" class="btn">Hablemos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div>
+        <span class="eyebrow">Empecemos</span>
+        <h2>Hagamos crecer tu negocio</h2>
+        <p class="lead">Contanos qué necesitás y te respondemos en menos de 24 hs con una propuesta clara. Sin compromiso.</p>
+        <div class="contact-info">
+          <a href="mailto:hola@nexora.com"><span class="ico">✉</span> hola@nexora.com</a>
+          <a href="tel:+5490000000000"><span class="ico">☎</span> +54 9 000 000 0000</a>
+          <a href="https://wa.me/5490000000000"><span class="ico">💬</span> WhatsApp directo</a>
+          <a href="#"><span class="ico">📍</span> Buenos Aires, Argentina · Remoto</a>
+        </div>
+      </div>
+      <form id="form" novalidate>
+        <div class="field"><label for="n">Nombre</label><input id="n" name="nombre" placeholder="Tu nombre" required></div>
+        <div class="field"><label for="e">Email</label><input id="e" type="email" name="email" placeholder="tu@email.com" required></div>
+        <div class="field"><label for="s">¿Qué necesitás?</label>
+          <select id="s" name="servicio">
+            <option>Marketing Digital</option>
+            <option>Automatización &amp; IA</option>
+            <option>Desarrollo Web</option>
+            <option>Una solución completa</option>
+          </select>
+        </div>
+        <div class="field"><label for="m">Mensaje</label><textarea id="m" name="mensaje" placeholder="Contanos sobre tu proyecto..."></textarea></div>
+        <button type="submit" class="btn btn-primary">Enviar consulta <span class="arrow">→</span></button>
+        <p class="form-note">Te respondemos en menos de 24 horas hábiles.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="logo"><span class="dot"></span>NEXORA</a>
+        <p>Marketing digital, automatización con IA y desarrollo web. Sistemas que hacen crecer tu negocio.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X">X</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Servicios</h4>
+        <a href="#servicios">Marketing Digital</a>
+        <a href="#servicios">Automatización &amp; IA</a>
+        <a href="#servicios">Desarrollo Web</a>
+        <a href="#planes">Planes</a>
+      </div>
+      <div class="foot-col">
+        <h4>Empresa</h4>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> NEXORA. Todos los derechos reservados.</span>
+      <span style="font-family:var(--font-mono)">Hecho con ⚡ y café</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* año */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* nav scrolled */
+const header = document.getElementById('header');
+addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 30));
+
+/* menú mobile */
+const burger = document.getElementById('burger'), navlinks = document.getElementById('navlinks');
+burger.addEventListener('click', () => navlinks.classList.toggle('open'));
+navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
+
+/* reveal on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+}, {threshold:.14});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* terminal typing delay */
+document.querySelectorAll('#term .ln').forEach((ln,i) => ln.style.animationDelay = (.5 + i*.45)+'s');
+
+/* contadores animados */
+const counters = document.querySelectorAll('[data-count]');
+const cio = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target, dec = el.dataset.dec, suf = el.dataset.suffix || '';
+    const target = dec ? parseFloat(dec) : parseInt(el.dataset.count,10);
+    let cur = 0; const step = target/60;
+    const tick = () => {
+      cur += step;
+      if(cur < target){
+        el.textContent = (dec ? cur.toFixed(1) : Math.floor(cur).toLocaleString('es')) + suf;
+        requestAnimationFrame(tick);
+      } else { el.textContent = (dec ? target.toFixed(1) : target.toLocaleString('es')) + suf; }
+    };
+    tick(); cio.unobserve(el);
+  });
+}, {threshold:.5});
+counters.forEach(c => cio.observe(c));
+
+/* glow que sigue al mouse en cards */
+document.querySelectorAll('.svc-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left)+'px');
+    card.style.setProperty('--my', (e.clientY - r.top)+'px');
+  });
+});
+
+/* form (demo) */
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  const txt = btn.innerHTML;
+  btn.innerHTML = '¡Gracias! Te contactamos pronto ✓';
+  btn.style.pointerEvents = 'none';
+  setTimeout(() => { btn.innerHTML = txt; btn.style.pointerEvents = ''; e.target.reset(); }, 3200);
+});
+</script>
+</body>
+</html>
