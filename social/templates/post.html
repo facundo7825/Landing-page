@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Skytech — plantilla de post</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07080c; --surface:#11141d;
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+  --text:#f3f5f8; --muted:#9aa1af; --muted-2:#636a78;
+  --lime:#c9ff2e; --lime-ink:#0c1500; --cyan:#2bf6cf; --violet:#7b6bff;
+  --accent:var(--lime); --accent-ink:var(--lime-ink);
+  --font-display:'Bricolage Grotesque',sans-serif;
+  --font-body:'Manrope',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1080px;overflow:hidden}
+body{
+  background:var(--bg);color:var(--text);font-family:var(--font-body);
+  position:relative;
+}
+body.tipo-tip{--accent:var(--cyan);--accent-ink:#001510}
+body.tipo-servicio{--accent:var(--lime);--accent-ink:var(--lime-ink)}
+body.tipo-caso{--accent:var(--violet);--accent-ink:#0e0a2a}
+body.tipo-promo{--accent:var(--lime);--accent-ink:var(--lime-ink)}
+
+/* atmósfera: blobs + grano + grilla (misma estética que la landing) */
+.blob{position:absolute;border-radius:50%;filter:blur(150px);mix-blend-mode:screen;pointer-events:none}
+.blob.a{width:760px;height:760px;background:radial-gradient(circle,var(--accent),transparent 65%);top:-340px;right:-280px;opacity:.32}
+.blob.b{width:640px;height:640px;background:radial-gradient(circle,var(--violet),transparent 65%);bottom:-320px;left:-240px;opacity:.22}
+body.tipo-caso .blob.b{background:radial-gradient(circle,var(--cyan),transparent 65%)}
+.grain{position:absolute;inset:0;opacity:.06;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.grid-lines{position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:72px 72px;
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 80%)}
+
+.frame{position:absolute;inset:0;padding:84px 90px;display:flex;flex-direction:column}
+
+/* cabecera: logo + categoría */
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:var(--font-display);font-weight:700;font-size:44px;letter-spacing:-.03em;display:flex;align-items:center;gap:16px}
+.logo .dot{width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 26px var(--accent)}
+.eyebrow{font-family:var(--font-mono);font-size:22px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:16px}
+.eyebrow::before{content:"";width:44px;height:2px;background:var(--accent)}
+
+/* cuerpo central */
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:38px;padding:30px 0}
+.stat{display:none;font-family:var(--font-display);font-weight:700;font-size:200px;line-height:.95;letter-spacing:-.02em;
+  background:linear-gradient(115deg,var(--accent),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+body.tipo-caso .stat{display:block}
+body.tipo-caso .stat:empty{display:none}
+.titulo{font-family:var(--font-display);font-weight:600;font-size:88px;line-height:1.04;letter-spacing:-.02em;max-width:18ch}
+.titulo .acc{color:var(--accent)}
+.cuerpo{font-size:38px;line-height:1.5;color:var(--muted);max-width:24ch;display:flex;flex-direction:column;gap:18px;font-weight:500}
+.cuerpo .li{display:flex;gap:18px;align-items:flex-start;color:#c6ccd8}
+.cuerpo .li::before{content:"→";color:var(--accent);font-weight:700;flex:0 0 auto}
+.cta{display:none;align-self:flex-start;background:var(--accent);color:var(--accent-ink);
+  font-weight:700;font-size:36px;padding:26px 52px;border-radius:100px;margin-top:8px;
+  box-shadow:0 18px 60px color-mix(in srgb,var(--accent) 32%,transparent)}
+body.tipo-promo .cta{display:inline-flex}
+.cta:empty{display:none!important}
+
+/* pie */
+.bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line-2);padding-top:34px}
+.bottom .l{font-family:var(--font-mono);font-size:22px;color:var(--muted-2);letter-spacing:.04em}
+.bottom .r{font-family:var(--font-mono);font-size:22px;color:var(--accent);letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="blob a"></div><div class="blob b"></div>
+<div class="grid-lines"></div><div class="grain"></div>
+
+<div class="frame">
+  <div class="top">
+    <div class="logo"><span class="dot"></span>Skytech</div>
+    <div class="eyebrow" id="eyebrow"></div>
+  </div>
+  <div class="mid">
+    <div class="stat" id="stat"></div>
+    <h1 class="titulo" id="titulo"></h1>
+    <div class="cuerpo" id="cuerpo"></div>
+    <div class="cta" id="cta"></div>
+  </div>
+  <div class="bottom">
+    <div class="l">Marketing · Automatización & IA · Web</div>
+    <div class="r">🔗 Link en bio</div>
+  </div>
+</div>
+
+<script>
+const ETIQUETAS = { tip:'Tip', servicio:'Servicios', caso:'Resultados', promo:'Promo' };
+
+/* Pinta un post en la plantilla. La llama render.js con los datos del JSON. */
+function renderPost(post){
+  document.body.className = 'tipo-' + post.tipo;
+  document.getElementById('eyebrow').textContent = ETIQUETAS[post.tipo] || post.tipo;
+  document.getElementById('stat').textContent = post.stat || '';
+
+  // *texto* dentro del título se resalta con el color de acento
+  const t = document.getElementById('titulo');
+  t.innerHTML = '';
+  String(post.titulo).split(/(\*[^*]+\*)/).forEach(seg => {
+    if(/^\*[^*]+\*$/.test(seg)){
+      const s = document.createElement('span');
+      s.className = 'acc'; s.textContent = seg.slice(1,-1);
+      t.appendChild(s);
+    } else if(seg){ t.appendChild(document.createTextNode(seg)); }
+  });
+
+  // cada línea del cuerpo es un párrafo; las que empiezan con "→ " llevan flecha de acento
+  const c = document.getElementById('cuerpo');
+  c.innerHTML = '';
+  String(post.cuerpo || '').split('\n').filter(Boolean).forEach(line => {
+    const p = document.createElement('p');
+    if(line.startsWith('→ ')){ p.className = 'li'; p.textContent = line.slice(2); }
+    else { p.textContent = line; }
+    c.appendChild(p);
+  });
+
+  document.getElementById('cta').textContent = post.cta || '';
+
+  // fit-to-box: si el contenido desborda el área central, achica las fuentes hasta que entre
+  const mid = document.querySelector('.mid');
+  let guard = 60;
+  const overflows = () => mid.scrollHeight > mid.clientHeight;
+  while(overflows() && guard-- > 0){
+    [t, c, document.getElementById('stat')].forEach(el => {
+      const f = parseFloat(getComputedStyle(el).fontSize);
+      el.style.fontSize = (f * 0.95) + 'px';
+    });
+  }
+  return document.fonts.ready.then(() => true);
+}
+window.renderPost = renderPost;
+</script>
+</body>
+</html>

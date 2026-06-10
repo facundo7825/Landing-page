@@ -1,0 +1,94 @@
+{
+  "lote": "2026-06",
+  "posts": [
+    {
+      "tipo": "servicio",
+      "titulo": "Tu negocio puede trabajar *24/7*. Nosotros lo hacemos posible.",
+      "cuerpo": "Somos Skytech: marketing digital, automatización con IA y desarrollo web.\nSistemas que atraen clientes y trabajan por vos.",
+      "caption": "¡Hola Instagram! 👋 Somos Skytech.\n\nAyudamos a negocios a crecer con tres pilares: marketing digital que atrae a las personas correctas, automatización con IA que no deja pasar ningún cliente, y webs que venden.\n\n¿Querés saber cómo aplicarlo a tu negocio? Escribinos por WhatsApp o entrá al link en bio. Te respondemos en menos de 24 hs 🚀",
+      "hashtags": ["MarketingDigital", "AutomatizacionConIA", "DesarrolloWeb", "AgenciaDigital", "PymesArgentina", "Emprendedores", "NegociosDigitales", "InteligenciaArtificial", "Skytech"]
+    },
+    {
+      "tipo": "tip",
+      "titulo": "3 señales de que tu negocio necesita *automatización*",
+      "cuerpo": "→ Respondés lo mismo 20 veces por día\n→ Se te pasan consultas sin contestar\n→ Vivís cargando datos a mano",
+      "caption": "¿Te identificaste con alguna? 😅\n\nCada hora que gastás en tareas repetitivas es una hora que no le dedicás a hacer crecer tu negocio. Un chatbot con IA, un CRM conectado a WhatsApp o un flujo de respuestas automáticas se configura una sola vez… y trabaja para siempre.\n\nContanos cuál es tu caso por DM o WhatsApp (link en bio) y te decimos qué se puede automatizar 🤖",
+      "hashtags": ["Automatizacion", "ChatbotIA", "Productividad", "PymesArgentina", "Emprendedores", "NegociosOnline", "InteligenciaArtificial", "TipsParaNegocios", "MarketingDigital"]
+    },
+    {
+      "tipo": "promo",
+      "titulo": "Diagnóstico *gratis* de tu presencia digital",
+      "cuerpo": "Analizamos tu negocio y te decimos exactamente dónde estás perdiendo clientes.\nSin compromiso.",
+      "cta": "Escribinos por WhatsApp →",
+      "caption": "¿Tu web no genera consultas? ¿Las redes no traen clientes? 🤔\n\nHacemos un diagnóstico gratuito de tu presencia digital: revisamos tu web, tus redes y tus procesos, y te damos un plan claro de mejora. Sin letra chica, sin compromiso.\n\n📲 Escribinos por WhatsApp (link en bio) y en menos de 24 hs tenés tu diagnóstico.",
+      "hashtags": ["DiagnosticoGratis", "MarketingDigital", "PymesArgentina", "Emprendedores", "NegociosDigitales", "AgenciaDigital", "CrecimientoDigital", "Skytech"]
+    },
+    {
+      "tipo": "tip",
+      "titulo": "El cliente le compra al que responde *primero*",
+      "cuerpo": "El 78% de los compradores elige a la primera empresa que le contesta.\nSi tardás horas, ya perdiste.",
+      "caption": "La velocidad de respuesta ES una estrategia de ventas ⚡\n\nUn agente con IA puede responder consultas al instante, a cualquier hora, todos los días. Mientras tu competencia contesta \"mañana te paso info\", vos ya cerraste la venta.\n\n¿Querés ver cómo funcionaría en tu negocio? Te armamos una demo. Link en bio 🤖",
+      "hashtags": ["Ventas", "ChatbotIA", "AtencionAlCliente", "Automatizacion", "InteligenciaArtificial", "PymesArgentina", "TipsDeVentas", "NegociosOnline", "MarketingDigital"]
+    },
+    {
+      "tipo": "servicio",
+      "titulo": "Publicidad que llega a las *personas correctas*",
+      "cuerpo": "→ Campañas en Meta & Google Ads\n→ SEO y posicionamiento\n→ Embudos y email marketing\nTodo medible, todo transparente.",
+      "caption": "Invertir en publicidad sin estrategia es tirar plata 💸\n\nEn Skytech diseñamos campañas con objetivos claros y métricas a la vista: sabés cuánto invertís, cuántos clientes llegan y cuánto retorna. Dashboards en vivo, reportes claros, cero humo.\n\n¿Listo para que tu marca aparezca frente a quienes la están buscando? Link en bio 🎯",
+      "hashtags": ["MetaAds", "GoogleAds", "PublicidadDigital", "SEO", "MarketingDigital", "PymesArgentina", "EmailMarketing", "AgenciaDeMarketing", "Skytech"]
+    },
+    {
+      "tipo": "caso",
+      "stat": "+40%",
+      "titulo": "de reservas en *2 meses*",
+      "cuerpo": "Automatizamos la atención por WhatsApp de un estudio de bienestar.\nHoy no pierden ningún cliente.",
+      "caption": "Caso real 📈 Un estudio de bienestar atendía WhatsApp \"cuando podía\": consultas sin responder, turnos perdidos.\n\nImplementamos un asistente con IA que responde al instante, agenda turnos y envía recordatorios. Resultado: +40% de reservas en dos meses y cero consultas perdidas.\n\n¿Tu negocio también atiende \"cuando puede\"? Hablemos. Link en bio 💬",
+      "hashtags": ["CasoDeExito", "Automatizacion", "WhatsAppBusiness", "ChatbotIA", "Resultados", "PymesArgentina", "InteligenciaArtificial", "NegociosDigitales", "Skytech"]
+    },
+    {
+      "tipo": "tip",
+      "titulo": "Tu web no es un gasto: es tu *vendedor 24/7*",
+      "cuerpo": "Una web lenta o confusa espanta clientes.\nUna web clara, rápida y con buen CTA los convierte.",
+      "caption": "Pensalo así: tu web es el único vendedor que trabaja las 24 horas, no se enferma y atiende a miles de personas a la vez 🕐\n\nPero si tarda en cargar, no se entiende qué vendés o no tiene un botón claro de contacto… ese vendedor está espantando gente.\n\n¿Hace cuánto no revisás tu web con ojos de cliente? Si querés, la revisamos nosotros gratis. Link en bio 🚀",
+      "hashtags": ["DesarrolloWeb", "LandingPage", "DiseñoWeb", "ConversionWeb", "PymesArgentina", "Emprendedores", "NegociosOnline", "TipsParaNegocios", "MarketingDigital"]
+    },
+    {
+      "tipo": "promo",
+      "titulo": "Tu negocio atendiendo *mientras dormís*",
+      "cuerpo": "Chatbot con IA + WhatsApp + agenda automática.\nLo dejamos funcionando en días, no meses.",
+      "cta": "Quiero mi demo →",
+      "caption": "Imaginá despertarte con turnos agendados y consultas respondidas… solas 😴⚡\n\nEso hace un asistente con IA bien implementado: responde, califica al cliente, agenda la reunión y te avisa. Vos solo aparecés a cerrar la venta.\n\nTe armamos una demo con tu propio negocio para que lo veas funcionando. Pedila por WhatsApp 📲 (link en bio)",
+      "hashtags": ["ChatbotIA", "Automatizacion", "WhatsAppBusiness", "InteligenciaArtificial", "PymesArgentina", "Emprendedores", "VentasAutomaticas", "Skytech"]
+    },
+    {
+      "tipo": "servicio",
+      "titulo": "Webs que *venden*, no que solo se ven bonitas",
+      "cuerpo": "→ Landing pages de alta conversión\n→ Tiendas online\n→ Webs corporativas a medida\nRápidas, claras y pensadas para convertir.",
+      "caption": "Una web linda que no genera consultas es decoración 🖼️\n\nNosotros diseñamos al revés: primero entendemos qué tiene que lograr tu web (consultas, ventas, reservas) y después la construimos alrededor de ese objetivo. Velocidad, claridad y botones que invitan a actuar.\n\n¿Tu próxima web? Hablemos. Link en bio 🚀",
+      "hashtags": ["DesarrolloWeb", "Ecommerce", "LandingPage", "TiendaOnline", "DiseñoWeb", "PymesArgentina", "NegociosDigitales", "AgenciaDigital", "Skytech"]
+    },
+    {
+      "tipo": "tip",
+      "titulo": "¿Seguís respondiendo *lo mismo* 20 veces por día?",
+      "cuerpo": "Precios, horarios, ubicación, formas de pago…\nEl 80% de las consultas son siempre las mismas 4.",
+      "caption": "Hacé la prueba: revisá tus últimos 20 chats y contá cuántas preguntas se repiten 👀\n\nEsas respuestas pueden salir solas, al instante, con tu tono y tu info siempre actualizada. Y vos quedás libre para las conversaciones que de verdad necesitan un humano.\n\nEs de las automatizaciones más rápidas de implementar y la que más tiempo devuelve. ¿La armamos? Link en bio 🤖",
+      "hashtags": ["Automatizacion", "ChatbotIA", "AtencionAlCliente", "Productividad", "PymesArgentina", "Emprendedores", "TipsParaNegocios", "InteligenciaArtificial", "Skytech"]
+    },
+    {
+      "tipo": "caso",
+      "stat": "5 → 30",
+      "titulo": "consultas por semana",
+      "cuerpo": "Web nueva + campañas en Meta y Google para una constructora.\nMismo negocio, 6x más oportunidades.",
+      "caption": "Caso real 🏗️ Una constructora recibía 5 consultas por semana con una web vieja y sin publicidad.\n\nRehicimos su web enfocada en conversión y lanzamos campañas segmentadas en Meta y Google. En pocas semanas: 30 consultas semanales. Mismo equipo, mismos servicios — 6 veces más oportunidades de venta.\n\n¿Cuántas consultas recibe tu negocio hoy? Te ayudamos a multiplicarlas. Link en bio 📈",
+      "hashtags": ["CasoDeExito", "MarketingDigital", "MetaAds", "GoogleAds", "DesarrolloWeb", "Resultados", "PymesArgentina", "NegociosDigitales", "Skytech"]
+    },
+    {
+      "tipo": "promo",
+      "titulo": "¿Listo para *crecer*? Empecemos hoy.",
+      "cuerpo": "Contanos qué necesitás y en menos de 24 hs tenés una propuesta clara.\nSin compromiso, sin letra chica.",
+      "cta": "Agendá tu llamada →",
+      "caption": "Todo crecimiento empieza con una conversación 💬\n\nContanos en qué punto está tu negocio y qué querés lograr. Te respondemos en menos de 24 hs con una propuesta concreta: qué haríamos, cómo y qué resultados esperar.\n\n📲 WhatsApp y web en el link en bio. El mejor momento para empezar fue ayer; el segundo mejor es hoy 🚀",
+      "hashtags": ["MarketingDigital", "Automatizacion", "DesarrolloWeb", "PymesArgentina", "Emprendedores", "CrecimientoDigital", "AgenciaDigital", "NegociosDigitales", "Skytech"]
+    }
+  ]
+}

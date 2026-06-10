@@ -10,3 +10,6 @@ desktop.ini
 # Logs / temporales
 *.log
 node_modules/
+
+# Posts generados (se regeneran con social/render.js)
+social/output/
