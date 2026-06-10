@@ -221,24 +221,6 @@ header.scrolled{background:rgba(7,8,12,.7);backdrop-filter:blur(16px);border-bot
 .quote .who .nm{font-weight:700;font-size:.92rem}
 .quote .who .rl{font-size:.82rem;color:var(--muted)}
 
-/* ============ PLANES ============ */
-.pricing{padding:130px 0;border-top:1px solid var(--line)}
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:54px}
-.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:40px 34px;display:flex;flex-direction:column;transition:.4s var(--ease)}
-.plan:hover{transform:translateY(-8px)}
-.plan.featured{border-color:var(--accent);background:linear-gradient(180deg,rgba(201,255,46,.06),var(--surface));position:relative}
-.plan.featured .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--accent-ink);font-size:.74rem;font-weight:700;padding:5px 14px;border-radius:100px;font-family:var(--font-mono);letter-spacing:.05em}
-.plan .pn{font-family:var(--font-display);font-size:1.35rem;font-weight:600}
-.plan .pd{color:var(--muted);font-size:.9rem;margin:8px 0 24px}
-.plan .pp{font-family:var(--font-display);font-size:2.6rem;font-weight:700}
-.plan .pp small{font-size:.95rem;color:var(--muted);font-family:var(--font-body);font-weight:500}
-.plan ul{list-style:none;margin:26px 0 30px;display:flex;flex-direction:column;gap:13px;flex:1}
-.plan ul li{display:flex;gap:11px;font-size:.92rem;color:var(--muted)}
-.plan ul li::before{content:"✦";color:var(--accent)}
-.plan .btn{width:100%;justify-content:center}
-.plan:not(.featured) .btn{background:var(--surface-2);color:var(--text);border:1px solid var(--line-2)}
-.plan:not(.featured) .btn:hover{border-color:var(--accent);color:var(--accent)}
-
 /* ============ CTA + CONTACTO ============ */
 .contact{padding:130px 0}
 .contact-card{background:
@@ -280,7 +262,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
 /* ============ RESPONSIVE ============ */
 @media(max-width:980px){
   .hero-grid,.why-grid,.contact-card{grid-template-columns:1fr}
-  .svc-grid,.steps,.band-grid,.testi-grid,.plans,.foot-grid{grid-template-columns:1fr 1fr}
+  .svc-grid,.steps,.band-grid,.testi-grid,.foot-grid{grid-template-columns:1fr 1fr}
   .terminal{display:none}
   .contact-card{padding:42px}
   .steps .step{border-right:none;border-bottom:1px solid var(--line)}
@@ -291,7 +273,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
   .nav-links.open{transform:none}
   .nav-links a{color:var(--text)}
   .burger{display:flex;z-index:101}
-  .svc-grid,.steps,.band-grid,.testi-grid,.plans,.foot-grid{grid-template-columns:1fr}
+  .svc-grid,.steps,.band-grid,.testi-grid,.foot-grid{grid-template-columns:1fr}
   .band-grid{gap:50px}
   .hero{padding:130px 0 80px}
   .hero-meta{gap:30px}
@@ -314,7 +296,6 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
       <a href="#servicios">Servicios</a>
       <a href="#proceso">Proceso</a>
       <a href="#nosotros">Nosotros</a>
-      <a href="#planes">Planes</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <a href="#contacto" class="nav-cta">Agendá una llamada</a>
@@ -501,57 +482,6 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
   </div>
 </section>
 
-<!-- ===== PLANES ===== -->
-<section class="pricing" id="planes">
-  <div class="wrap">
-    <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center">
-      <span class="eyebrow">Planes flexibles</span>
-      <h2>Elegí cómo querés crecer</h2>
-      <p>Planes pensados para cada etapa. Sin contratos eternos, cancelás cuando quieras.</p>
-    </div>
-    <div class="plans">
-      <div class="plan reveal">
-        <div class="pn">Despegue</div>
-        <div class="pd">Para negocios que arrancan su presencia digital.</div>
-        <div class="pp">$<span data-flex>490</span><small>/mes</small></div>
-        <ul>
-          <li>Landing page profesional</li>
-          <li>Gestión de 1 canal de Ads</li>
-          <li>Automatización básica de leads</li>
-          <li>Reporte mensual</li>
-        </ul>
-        <a href="#contacto" class="btn">Empezar</a>
-      </div>
-      <div class="plan featured reveal">
-        <span class="tag">MÁS ELEGIDO</span>
-        <div class="pn">Crecimiento</div>
-        <div class="pd">El sistema completo para escalar en serio.</div>
-        <div class="pp">$<span data-flex>990</span><small>/mes</small></div>
-        <ul>
-          <li>Todo lo de Despegue</li>
-          <li>Marketing multicanal (Meta + Google)</li>
-          <li>Automatización con IA + chatbot</li>
-          <li>Web/e-commerce a medida</li>
-          <li>Dashboard en tiempo real</li>
-        </ul>
-        <a href="#contacto" class="btn btn-primary">Quiero este</a>
-      </div>
-      <div class="plan reveal">
-        <div class="pn">Enterprise</div>
-        <div class="pd">Soluciones a medida para empresas en expansión.</div>
-        <div class="pp">A medida</div>
-        <ul>
-          <li>Estrategia 360° dedicada</li>
-          <li>Desarrollo de apps y plataformas</li>
-          <li>Automatizaciones avanzadas</li>
-          <li>Equipo y soporte prioritario</li>
-        </ul>
-        <a href="#contacto" class="btn">Hablemos</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== CONTACTO ===== -->
 <section class="contact" id="contacto">
   <div class="wrap">
@@ -561,13 +491,16 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
         <h2>Hagamos crecer tu negocio</h2>
         <p class="lead">Contanos qué necesitás y te respondemos en menos de 24 hs con una propuesta clara. Sin compromiso.</p>
         <div class="contact-info">
-          <a href="mailto:hola@skytech.com"><span class="ico">✉</span> hola@skytech.com</a>
-          <a href="tel:+5490000000000"><span class="ico">☎</span> +54 9 000 000 0000</a>
-          <a href="https://wa.me/5490000000000"><span class="ico">💬</span> WhatsApp directo</a>
-          <a href="#"><span class="ico">📍</span> Buenos Aires, Argentina · Remoto</a>
+          <a href="mailto:facundo7825@gmail.com"><span class="ico">✉</span> facundo7825@gmail.com</a>
+          <a href="tel:+5493834208776"><span class="ico">☎</span> +54 9 383 420-8776</a>
+          <a href="https://wa.me/5493834208776?text=Hola%21%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20servicios." target="_blank" rel="noopener"><span class="ico">💬</span> WhatsApp directo</a>
+          <a href="#"><span class="ico">📍</span> Argentina · Remoto</a>
         </div>
       </div>
-      <form id="form" novalidate>
+      <form id="form" action="https://formsubmit.co/facundo7825@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nueva consulta desde la web Skytech">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
         <div class="field"><label for="n">Nombre</label><input id="n" name="nombre" placeholder="Tu nombre" required></div>
         <div class="field"><label for="e">Email</label><input id="e" type="email" name="email" placeholder="tu@email.com" required></div>
         <div class="field"><label for="s">¿Qué necesitás?</label>
@@ -580,7 +513,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
         </div>
         <div class="field"><label for="m">Mensaje</label><textarea id="m" name="mensaje" placeholder="Contanos sobre tu proyecto..."></textarea></div>
         <button type="submit" class="btn btn-primary">Enviar consulta <span class="arrow">→</span></button>
-        <p class="form-note">Te respondemos en menos de 24 horas hábiles.</p>
+        <p class="form-note">Te respondemos en menos de 24 horas hábiles. ¿Preferís algo más directo? <a href="https://wa.me/5493834208776?text=Hola%21%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20servicios." target="_blank" rel="noopener" style="color:var(--accent)">Escribinos por WhatsApp</a>.</p>
       </form>
     </div>
   </div>
@@ -605,7 +538,6 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
         <a href="#servicios">Marketing Digital</a>
         <a href="#servicios">Automatización &amp; IA</a>
         <a href="#servicios">Desarrollo Web</a>
-        <a href="#planes">Planes</a>
       </div>
       <div class="foot-col">
         <h4>Empresa</h4>
@@ -679,14 +611,29 @@ document.querySelectorAll('.svc-card').forEach(card => {
   });
 });
 
-/* form (demo) */
+/* form: envío por FormSubmit (AJAX, sin salir de la página) */
 document.getElementById('form').addEventListener('submit', e => {
   e.preventDefault();
-  const btn = e.target.querySelector('button');
+  const form = e.target;
+  const btn = form.querySelector('button');
   const txt = btn.innerHTML;
-  btn.innerHTML = '¡Gracias! Te contactamos pronto ✓';
+  btn.innerHTML = 'Enviando...';
   btn.style.pointerEvents = 'none';
-  setTimeout(() => { btn.innerHTML = txt; btn.style.pointerEvents = ''; e.target.reset(); }, 3200);
+  fetch('https://formsubmit.co/ajax/facundo7825@gmail.com', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+  .then(r => { if(!r.ok) throw new Error(); return r.json(); })
+  .then(() => {
+    btn.innerHTML = '¡Gracias! Te contactamos pronto ✓';
+    form.reset();
+    setTimeout(() => { btn.innerHTML = txt; btn.style.pointerEvents = ''; }, 3200);
+  })
+  .catch(() => {
+    btn.innerHTML = 'Hubo un error, probá por WhatsApp 💬';
+    setTimeout(() => { btn.innerHTML = txt; btn.style.pointerEvents = ''; }, 3200);
+  });
 });
 </script>
 </body>
