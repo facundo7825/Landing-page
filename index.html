@@ -345,9 +345,42 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
   .hero-meta{gap:30px}
   .contact-card{padding:30px}
 }
+
+/* ============ BOTÓN FLOTANTE WHATSAPP ============ */
+.wa-float{
+  position:fixed;right:22px;bottom:22px;z-index:90;
+  display:flex;align-items:center;gap:0;
+  height:58px;padding:0 18px;border-radius:999px;
+  background:#25D366;color:#073b25;
+  font-family:var(--font-display);font-weight:700;font-size:1rem;
+  box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 6px rgba(37,211,102,.15);
+  transform:translateY(120px);opacity:0;
+  transition:transform .5s var(--ease),opacity .5s var(--ease),box-shadow .3s,width .3s;
+}
+.wa-float.show{transform:translateY(0);opacity:1}
+.wa-float:hover{box-shadow:0 14px 38px rgba(0,0,0,.5),0 0 0 8px rgba(37,211,102,.22)}
+.wa-float .wa-ico{width:30px;height:30px;flex:0 0 30px;display:block}
+.wa-float .wa-txt{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .35s var(--ease),opacity .25s,margin .35s}
+.wa-float:hover .wa-txt{max-width:180px;opacity:1;margin-left:10px}
+@media(max-width:560px){
+  .wa-float{right:16px;bottom:16px;height:54px;padding:0 12px}
+  .wa-float .wa-txt{display:none}
+}
+.foot-cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:11px 18px;border-radius:999px;
+  border:1px solid rgba(37,211,102,.35);background:rgba(37,211,102,.08);color:#5ef0a0;font-weight:600;font-size:.92rem;
+  transition:background .25s,border-color .25s}
+.foot-cta:hover{background:rgba(37,211,102,.16);border-color:rgba(37,211,102,.55)}
 </style>
 </head>
 <body>
+
+<!-- ===== BOTÓN FLOTANTE DE WHATSAPP ===== -->
+<a class="wa-float" id="waFloat" aria-label="Escribinos por WhatsApp"
+   href="https://wa.me/5493834208776?text=Hola%21%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20servicios."
+   target="_blank" rel="noopener" data-wa>
+  <svg class="wa-ico" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.6 1.9h.1c8.6 0 15.6-7 15.6-15.6C31.6 7.4 24.6.4 16 .4zm0 28.5h-.1c-2.4 0-4.7-.6-6.8-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.3 20.6 2.6 18.3 2.6 16 2.6 8.6 8.6 2.6 16 2.6c3.6 0 6.9 1.4 9.4 3.9 2.5 2.5 3.9 5.9 3.9 9.5 0 7.4-6 13.4-13.3 13.4zm7.4-10c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.5 1.4-1.5 3.5s1.5 4.1 1.7 4.3c.2.3 3 4.6 7.3 6.4 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.4-1 2.8-2 .3-1 .3-1.8.2-2-.1-.2-.4-.3-.8-.5z"/></svg>
+  <span class="wa-txt">Escribinos</span>
+</a>
 
 <!-- Atmósfera -->
 <div class="atmos"><div class="blob a"></div><div class="blob b"></div><div class="blob c"></div></div>
@@ -559,8 +592,8 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
         <div class="contact-info">
           <a href="mailto:facundo7825@gmail.com"><span class="ico">✉</span> facundo7825@gmail.com</a>
           <a href="tel:+5493834208776"><span class="ico">☎</span> +54 9 383 420-8776</a>
-          <a href="https://wa.me/5493834208776?text=Hola%21%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20servicios." target="_blank" rel="noopener"><span class="ico">💬</span> WhatsApp directo</a>
-          <a href="#"><span class="ico">📍</span> Argentina · Remoto</a>
+          <a href="https://wa.me/5493834208776?text=Hola%21%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20servicios." target="_blank" rel="noopener" data-wa><span class="ico">💬</span> WhatsApp directo</a>
+          <span><span class="ico">📍</span> Catamarca, Argentina · Trabajamos en remoto</span>
         </div>
       </div>
       <form id="form" action="https://formsubmit.co/facundo7825@gmail.com" method="POST">
@@ -579,7 +612,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
         </div>
         <div class="field"><label for="m">Mensaje</label><textarea id="m" name="mensaje" placeholder="Contanos sobre tu proyecto..."></textarea></div>
         <button type="submit" class="btn btn-primary">Enviar consulta <span class="arrow">→</span></button>
-        <p class="form-note">Te respondemos en menos de 24 horas hábiles. ¿Preferís algo más directo? <a href="https://wa.me/5493834208776?text=Hola%21%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20servicios." target="_blank" rel="noopener" style="color:var(--accent)">Escribinos por WhatsApp</a>.</p>
+        <p class="form-note">Te respondemos en menos de 24 horas hábiles. ¿Preferís algo más directo? <a href="https://wa.me/5493834208776?text=Hola%21%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20servicios." target="_blank" rel="noopener" style="color:var(--accent)" data-wa>Escribinos por WhatsApp</a>.</p>
       </form>
     </div>
   </div>
@@ -592,12 +625,15 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
       <div class="foot-brand">
         <a href="#" class="logo"><span class="dot"></span>Skytech</a>
         <p>Marketing digital, automatización con IA y desarrollo web. Sistemas que hacen crecer tu negocio.</p>
+        <!-- Redes: descomentar y poner las URLs reales cuando estén creadas las cuentas.
         <div class="socials">
-          <a href="#" aria-label="Instagram">IG</a>
+          <a href="https://instagram.com/TU_USUARIO" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
           <a href="#" aria-label="LinkedIn">in</a>
           <a href="#" aria-label="X">X</a>
           <a href="#" aria-label="YouTube">▶</a>
         </div>
+        -->
+        <a class="foot-cta" href="https://wa.me/5493834208776?text=Hola%21%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20servicios." target="_blank" rel="noopener" data-wa>💬 Escribinos por WhatsApp</a>
       </div>
       <div class="foot-col">
         <h4>Servicios</h4>
@@ -610,13 +646,10 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
         <a href="#nosotros">Nosotros</a>
         <a href="#proceso">Proceso</a>
         <a href="#contacto">Contacto</a>
-        <a href="#">Blog</a>
       </div>
       <div class="foot-col">
         <h4>Legal</h4>
-        <a href="#">Privacidad</a>
-        <a href="#">Términos</a>
-        <a href="#">Cookies</a>
+        <a href="/privacidad.html">Política de privacidad</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -626,13 +659,28 @@ footer{border-top:1px solid var(--line);padding:70px 0 40px;background:var(--bg-
   </div>
 </footer>
 
+<!-- Vercel Web Analytics (sin cookies, anónimo). Activalo en el panel de Vercel: Project → Analytics → Enable. -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
 <script>
 /* año */
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* nav scrolled */
+/* tracking de conversiones: clics a WhatsApp */
+document.querySelectorAll('[data-wa]').forEach(a =>
+  a.addEventListener('click', () => window.va('event', { name: 'whatsapp_click', source: a.id || 'link' }))
+);
+
+/* nav scrolled + botón flotante de WhatsApp aparece al bajar */
 const header = document.getElementById('header');
-addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 30));
+const waFloat = document.getElementById('waFloat');
+addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', scrollY > 30);
+  waFloat.classList.toggle('show', scrollY > 500);
+});
 
 /* menú mobile */
 const burger = document.getElementById('burger'), navlinks = document.getElementById('navlinks');
@@ -692,6 +740,7 @@ document.getElementById('form').addEventListener('submit', e => {
   })
   .then(r => { if(!r.ok) throw new Error(); return r.json(); })
   .then(() => {
+    window.va('event', { name: 'form_submit' });
     btn.innerHTML = '¡Gracias! Te contactamos pronto ✓';
     form.reset();
     setTimeout(() => { btn.innerHTML = txt; btn.style.pointerEvents = ''; }, 3200);
