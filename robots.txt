@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://landing-page.vercel.app/sitemap.xml
+Sitemap: https://landing-page-kohl-ten-27.vercel.app/sitemap.xml
